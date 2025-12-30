@@ -24,7 +24,7 @@ class DBusLogger {
 
   void info(Object? message, [Object? error, StackTrace? stackTrace]) => _log("info", message, error, stackTrace);
 
-  void warning(Object? message, [Object? error, StackTrace? stackTrace]) => _log("waring", message, error, stackTrace);
+  void warning(Object? message, [Object? error, StackTrace? stackTrace]) => _log("warning", message, error, stackTrace);
 
   void error(Object? message, [Object? error, StackTrace? stackTrace]) => _log("error", message, error, stackTrace);
 }
