@@ -1,5 +1,5 @@
 ///
-typedef PrintLog = void Function(String level, Object? message, [Object? error, StackTrace? stackTrace]);
+typedef PrintLog = void Function(String level, String tag, Object? message, [Object? error, StackTrace? stackTrace]);
 
 ///
 class DBusLogger {
@@ -15,7 +15,7 @@ class DBusLogger {
   set print(PrintLog? print) => _print = print;
 
   void _log(String level, Object? message, [Object? error, StackTrace? stackTrace]) {
-    _print?.call(level, message, error, stackTrace);
+    _print?.call(level, tag, message, error, stackTrace);
   }
 
   void trace(Object? message, [Object? error, StackTrace? stackTrace]) => _log("trace", message, error, stackTrace);
