@@ -1,10 +1,15 @@
+///
 typedef PrintLog = void Function(String level, Object? message, [Object? error, StackTrace? stackTrace]);
 
+///
 class DBusLogger {
+  ///
   final String tag;
 
+  ///
   PrintLog? _print;
 
+  ///
   DBusLogger(this.tag);
 
   set print(PrintLog? print) => _print = print;
