@@ -9,10 +9,14 @@ class DBusDocInterface {
   ///
   final bool useLog;
 
+  /// 是否开启local_X响应式获取
+  /// 如果使用则需要flutter项目
+  final bool useValueNotifier;
+
   ///
   final List<DBusDocBuild> buildList;
 
-  const DBusDocInterface(this.interfaceName, {this.useLog = true, this.buildList = const [DBusDocBuild.client, DBusDocBuild.service]});
+  const DBusDocInterface(this.interfaceName, {this.useLog = true, this.useValueNotifier = false, this.buildList = const [DBusDocBuild.client, DBusDocBuild.service]});
 }
 
 ///

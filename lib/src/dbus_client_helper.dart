@@ -12,13 +12,14 @@ abstract class DBusClientHelper {
   DBusClientHelper(this.remoteObject, {required this.interfaceName});
 
   ///
-  Future<DBusMethodSuccessResponse> callMethod(String name, Iterable<DBusValue> values, {DBusSignature? replySignature, bool noReplyExpected = false, bool noAutoStart = false, bool allowInteractiveAuthorization = false}) async {
+  Future<DBusMethodSuccessResponse> callMethod(String name, Iterable<DBusValue> values,
+      {DBusSignature? replySignature, bool noReplyExpected = false, bool noAutoStart = false, bool allowInteractiveAuthorization = false}) async {
     return await remoteObject.callMethod(interfaceName, name, values, replySignature: replySignature);
   }
 
   ///
   DBusSignalStream buildSignal(String name, {DBusSignature? signature}) {
-    return DBusRemoteObjectSignalStream(object: remoteObject, interface: interfaceName, name: 'Disconnected', signature: signature);
+    return DBusRemoteObjectSignalStream(object: remoteObject, interface: interfaceName, name: name, signature: signature);
   }
 
   ///
@@ -56,13 +57,17 @@ abstract class DBusClientHelper {
     }
 
     for (final key in signal.invalidatedProperties) {
-      final value = await remoteObject.getProperty(interfaceName, key);
-      setValue(key, value);
+      try {
+        final value = await remoteObject.getProperty(interfaceName, key);
+        setValue(key, value);
+      } catch (e) {
+        setValue(key, null);
+      }
     }
   }
 
   ///
-  void setValue(String key, DBusValue value) {
-    throw UnsupportedError("can't find key: $key -> ${value.toString()}");
+  void setValue(String key, DBusValue? value) {
+    throw UnsupportedError("can't find key: $key -> $value");
   }
 }
