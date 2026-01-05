@@ -1,6 +1,6 @@
 name: dbus_annotations
 description: Annotations based on dbus for automatically generating D-Bus object code.
-version: 0.1.2
+version: 0.1.3
 repository: https://github.com/lucifdch/dbus_annotations.dart
 
 environment:

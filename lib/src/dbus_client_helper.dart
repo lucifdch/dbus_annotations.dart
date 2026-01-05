@@ -70,4 +70,7 @@ abstract class DBusClientHelper {
   void setValue(String key, DBusValue? value) {
     throw UnsupportedError("can't find key: $key -> $value");
   }
+
+  ///
+  Future<void> releaseHelper() async {}
 }
