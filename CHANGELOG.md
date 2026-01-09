@@ -13,3 +13,7 @@
 ## 0.1.3
 
 - Add releaseHelper() method
+
+## 0.1.4
+
+- Change set value add ValueNotifier to Property

@@ -72,5 +72,5 @@ abstract class DBusClientHelper {
   }
 
   ///
-  Future<void> releaseHelper() async {}
+  void releaseHelper() async {}
 }
